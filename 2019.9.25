@@ -1,0 +1,62 @@
+//https://e-tutor.itsa.org.tw/e-Tutor/mod/programming/view.php?a=6497
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int amount=sc.nextInt();
+        int[][] arr=new int[amount+2][amount+2];
+        setIntArray(arr);
+        for(int i=1;i<amount+1;i++){
+            for(int j=1;j<amount+1;j++)
+                arr[i][j]=sc.nextInt();
+        }
+        //showIntArray(arr);
+        int[][] endARR=new int[amount][amount];
+        for(int i=1,k=0;i<arr.length-1;i++,k++)
+            for(int j=1,l=0;j<arr[i].length-1;j++,l++) {
+                if(k<amount&&l<amount)
+                    if(arr[i][j]==0)
+                        endARR[k][l] = bombAmout(arr, i, j);
+
+            }
+         showIntArray(endARR);
+    }
+
+    public static void setIntArray(int[][] arr){
+
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[i].length;j++)
+                arr[i][j]=-1;
+        }
+    }
+
+    public static void showIntArray(int[][] arr){
+
+        for(int i=0;i<arr.length;i++){
+            for(int j=0;j<arr[i].length;j++) {
+                if(j==0)
+                    System.out.print(arr[i][j] );
+                else
+                    System.out.print(" "+arr[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    public static int bombAmout(int[][] arr,int i,int j){
+        int amount=0;
+        int goal=1;
+        if(arr[i-1][j-1]==goal)    amount++;
+        if(arr[i-1][j]==goal)      amount++;
+        if(arr[i-1][j+1]==goal)    amount++;
+        if(arr[i][j-1]==goal)      amount++;
+        if(arr[i][j+1]==goal)      amount++;
+        if(arr[i+1][j-1]==goal)    amount++;
+        if(arr[i+1][j]==goal)      amount++;
+        if(arr[i+1][j+1]==goal)    amount++;
+        return amount;
+    }
+}
