@@ -1,0 +1,13 @@
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner sc=new Scanner(System.in);
+    long sum=0;
+    //避免溢位
+    for(int i=0;i<6;i++){
+      int cache=sc.nextInt();
+      sum+=cache*cache*cache;
+    }
+  System.out.print(sum+"\n");
+  }
+}
