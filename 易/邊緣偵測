@@ -42,7 +42,7 @@ class Main {
           if(arr[i][j]==1)
             System.out.print("0");
           else
-            System.out.print(" _");
+            System.out.print("_");
         else
           if(arr[i][j]==1)
             System.out.print(" 0");
