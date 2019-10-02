@@ -2,78 +2,65 @@ import java.util.*;
 
 class Main {
 
-  static int flag=0;
-  //static boolean flag2=true;
+  static int flag = 0;
+  // static boolean flag2=true;
   static int time;
+
   public static void main(String[] args) {
-    Scanner sc=new Scanner(System.in);
-    time=sc.nextInt();
-    
-    for(int i=0;i<time;i++,flag++){
-      int y=sc.nextInt(),x=sc.nextInt();
-      int[][] arr=new int[y+2][x+2];
-      //避免超出陣列
+    Scanner sc = new Scanner(System.in);
+    time = sc.nextInt();
+
+    for (int i = 0; i < time; i++, flag++) {
+      int y = sc.nextInt(), x = sc.nextInt();
+      int[][] arr = new int[y + 2][x + 2];
+      // 避免超出陣列
       setArray(arr);
-      //把陣列的所有質變成-1
+      // 把陣列的所有質變成-1
       /**/
-      for(int j=1;j<y+1;j++){
-        for(int k=1;k<x+1;k++)
-          arr[j][k]=sc.nextInt();
-      }/**/
-      
+      for (int j = 1; j < y + 1; j++) {
+        for (int k = 1; k < x + 1; k++)
+          arr[j][k] = sc.nextInt();
+      } /**/
+
       setArrayToZero(arr);
-      show(arr,8,i);
+      //if(flag!=0)
+      //  System.out.print("\n");
+      show(arr);
     }
   }
 
-  public static void setArray(int[][] array){
-    for(int i=0;i<array.length;i++){
-      for(int j=0;j<array[i].length;j++){
-        array[i][j]=-1;
+  public static void setArray(int[][] array) {
+    for (int i = 0; i < array.length; i++) {
+      for (int j = 0; j < array[i].length; j++) {
+        array[i][j] = -1;
       }
     }
   }
-  public static void show(int[][] arr,int endLine,int NowTime){
-    //if(flag>=1)
-    //  System.out.print("\n");
+
+  public static void show(int[][] arr) {
+    if(flag!=0)
+      System.out.print("\n");
     
     for(int i=1;i<arr.length-1;i++){
-      int j;
-      for(j=1;j<arr[i].length-1;j++){
-
-/*
-        if(j==1)
-          if(arr[i][j]==1)
-            System.out.print("0");
-          else
-            System.out.print("_");
-        else/**/
-        if(arr[i][j]==1)
+      for(int j=1;j<arr[i].length-1;j++){
+        if(arr[i][j]!=1)
+          System.out.print("_ ");
+        else 
           System.out.print("0 ");
-        else
-          System.out.print("_ ");/**/
       }
-      if(!(NowTime==time))
-        if(i==endLine)
-          System.out.print("");
-        else
-          System.out.println();
-      else
-        System.out.println("=");
-      
+      System.out.print("\n");
     }
   }
 
-  public static void setArrayToZero(int[][] arr){
-    for(int j=1;j<arr.length-1;j++){
-      for(int k=1;k<arr[j].length-1;k++){
-        
-        if(arr[j][k]==1&&arr[j+1][k]>0&&arr[j][k+1]>0&&arr[j-1][k]>0&&arr[j][k-1]>0)
-          arr[j][k]=2;
+  public static void setArrayToZero(int[][] arr) {
+    for (int j = 1; j < arr.length - 1; j++) {
+      for (int k = 1; k < arr[j].length - 1; k++) {
+
+        if (arr[j][k] == 1 && arr[j + 1][k] > 0 && arr[j][k + 1] > 0 && arr[j - 1][k] > 0 && arr[j][k - 1] > 0)
+          arr[j][k] = 2;
 
       }
     }
   }
-
 
 }
